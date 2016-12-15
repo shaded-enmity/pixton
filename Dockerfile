@@ -14,6 +14,9 @@ RUN curl https://sh.rustup.rs -sSf > rustup\
  && bash rustup -y --default-toolchain stable\
  && (cd /opt/pixton && cargo build --release)
 
+RUN chgrp -R 0 /opt/pixton && chmod -R g+rw /opt/pixton\
+ && find /opt/pixton -type d -exec chmod g+x {} +
+
 ENV RUST_BACKTRACE=1
 WORKDIR /opt/pixton
 CMD ["target/release/pixton"]
