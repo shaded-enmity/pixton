@@ -1,0 +1,81 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: pixton
+  annotations:
+    description: "Pixton, a simple image hsoting platform"
+    tags: "pixton,rust"
+  labels:
+    template: "pixton"
+objects:
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: pixton
+      labels:
+        app: pixton
+        tier: frontend
+        template: pixton
+    spec:
+      # type: LoadBalancer
+      # type: NodePort
+      ports:
+        - port: 6868
+      selector:
+        app: pixton
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      name: pixton
+      labels:
+        template: pixton
+    spec:
+      to:
+        kind: Service
+        name: pixton
+  - apiVersion: v1
+    kind: ReplicationController
+    metadata:
+      name: pixton
+      labels:
+        template: pixton
+    spec:
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: pixton
+            tier: frontend
+        spec:
+          containers:
+          - name: pixton
+            image: ${REGISTRY}/${NAMESPACE}/pixton:${IMAGE_TAG}
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100Mi
+            env:
+            ports:
+              - containerPort: 6868
+            volumeMounts:
+              - name: pixton-data-volume
+                mountPath: /opt/pixton/data/images
+          volumes:
+            - name: pixton-data-volume
+              persistentVolumeClaim:
+                claimName: pixton-data
+parameters:
+  - name: IMAGE_TAG
+    displayName: Image Tag
+    description: "The tag for image to be pulled"
+    required: true
+    value: "latest"
+  - name: NAMESPACE
+    displayName: Registry Namespace
+    description: "Namespace in registry from where the images should be used"
+    required: true
+    value: "pixton"
+  - name: REGISTRY
+    displayName: Registry URL
+    value: "172.30.228.33:5000"

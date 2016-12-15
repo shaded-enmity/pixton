@@ -1,0 +1,45 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  name: pixton-build
+  annotations:
+    description: "Pixton service build"
+    tags: builds
+  labels:
+    template: pixton-build
+objects:
+  - apiVersion: v1
+    kind: ImageStream
+    metadata:
+      name: pixton
+      labels:
+        template: pixton-build
+    spec:
+      dockerImageRepository: ""
+      tags:
+        - name: latest
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      name: pixton
+      labels:
+        template: pixton-build
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: pixton:latest
+      source:
+        git:
+          ref: master
+          uri: https://github.com/shaded-enmity/pixton.git
+        type: Git
+      strategy:
+        type: Docker
+        dockerStrategy:
+            dockerfilePath: Dockerfile
+      triggers:
+        - generic:
+            secret: pixton
+          type: Generic
