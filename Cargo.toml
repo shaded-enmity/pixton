@@ -1,0 +1,9 @@
+[package]
+name = "pixton"
+version = "0.1.0"
+authors = ["Pavel Odvody <the.arul@gmail.com>"]
+
+[dependencies]
+nickel = "0.9.0"
+hyper = "0.9.0"
+multipart = { version = "0.8.0", features = ["nickel"] }

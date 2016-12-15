@@ -1,0 +1,47 @@
+<html lang='en'>
+  <head>
+    <title>Pixton</title>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href='http://cdn.everything.io/kickstart/3.x/css/kickstart.min.css' />
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous'></script>
+    <link rel='stylesheet' href='/pixton.css'>
+    <script type='text/javascript'>
+        $(document.body).ready(function(){
+            let url = $('#url'), md = $('#markdown');
+            url.on('click', function(){
+                url.select();
+                document.execCommand('copy');
+            });
+            md.on('click', function(){
+                md.select();
+                document.execCommand('copy');
+            });
+            url.val(window.location.origin + '/images' + url.val());
+            md.val('!({{digest}})['+window.location.origin+'/images'+md.val()+']')
+        });
+    </script>
+  </head>
+  <body>
+     <div class='pixton-container'>
+         <div class='column'></div>
+         <div class='center'>
+            <div class='spacer'></div>
+            <div class='logo'>
+                <h1 class='pixel-font'><a href='/'>PIXTON</a></h1>
+            </div>
+            <div class='spacer'></div>
+            <div class='pixel-font'>
+                URL:
+                <input id='url' type='text' value='/{{path}}' class='pixton-container' readonly />
+                MARKDOWN:
+                <input id='markdown' type='text' value='/{{path}}' class='pixton-container' readonly />
+            </div>
+            <div class='spacer'></div>
+            <img src='/images/{{path}}' style='max-width: 100%; max-height: 800px' />
+            <div class='gh-link'><a href='https://github.com/shaded-enmity/pixton'>PIXTON Simple Image Hosting v1.0.0</a></div>
+         </div>
+         <div class='column'></div>         
+     </div>
+  </body>
+</html>

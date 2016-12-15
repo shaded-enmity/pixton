@@ -1,0 +1,222 @@
+.menu-item {
+    font-family: Oxygen; border: 1px solid #aaa; margin-bottom: 1px; cursor: hand
+}
+
+#nav-menu {
+    width: 20%; height: 100%; position: fixed; background-color: #ddd; overflow: auto; top: 30px
+}
+
+body {
+    overflow-x: hidden;
+}
+
+li {
+    padding-left: 10px
+}
+
+ul {
+    margin-bottom: 0;
+}
+
+.pixton-container {
+    width: 100%;
+}
+
+.column {
+    width: 20%; 
+    display: inline-block; 
+    margin: 0; 
+    padding: 0;
+}
+
+.center {
+    width: 59%; 
+    display: inline-block; 
+    background-color: #fff; 
+    margin: 0; 
+    padding: 0;
+}
+
+.vertical-padding {
+    height: 25%;
+}
+
+.logo {
+    border-bottom: 3px dotted #eee; 
+    color: #888;
+}
+
+.logo a {
+    color: inherit;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+.upload-box { 
+    display: inline-block; 
+    width: 75%; 
+}
+
+.upload-button-box {
+    display: inline-block; 
+    float: right;
+    overflow: none;
+}
+
+.green {
+    color: #227711;
+}
+
+#upload-button {
+    background-color: #227711; 
+    color: #eee; 
+    line-height: 2.75em; 
+    width: 200px; 
+    text-align: center; 
+    font-weight: bold;
+}
+
+#button {
+    position: relative; 
+    top: 2em; 
+    display: none;
+}
+
+#upload-div {
+     height: 2.8em; 
+     position: relative; 
+     top: 2em; 
+     display: none;
+}
+
+#upload-size-note {
+    font-family: monospace;
+    color: #aaa;
+    display: none;
+    position: relative;
+}
+
+.gh-link {
+    padding-top: 10em; 
+    font-family: 'VT323', monospace; 
+    font-size: 10px; 
+    color: #aaa;
+}
+
+.pixel-font {
+    font-family: 'VT323', monospace;
+}
+
+.spacer {
+    padding-top: 1.25em;
+}
+
+.smaller-spacer {
+    padding-top: -1.25em;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+.inputfile-6 + label {
+    color: #333;
+}
+
+.inputfile-6 + label {
+    border: 1px solid #555;
+    background-color: #eee;
+    padding: 0;
+}
+
+.inputfile-6:focus + label,
+.inputfile-6.has-focus + label,
+.inputfile-6 + label:hover {
+    border-color: #666;
+}
+
+.inputfile-6 + label span,
+.inputfile-6 + label strong {
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.inputfile-6 + label span {
+    width: 200px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    font-family: 'VT323', monospace;
+}
+
+.inputfile-6 + label strong {
+    color: #f1e5e6;
+    background-color: #555;
+    display: inline-block;
+}
+
+.inputfile-6:focus + label strong,
+.inputfile-6.has-focus + label strong,
+.inputfile-6 + label:hover strong {
+    background-color: #666;
+}
+
+@media screen and (max-width: 50em) {
+	.inputfile-6 + label strong {
+		display: block;
+	}
+}
+
+#file-label {
+    width: 400px;
+}
