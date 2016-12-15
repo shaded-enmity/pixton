@@ -14,6 +14,7 @@ RUN curl https://sh.rustup.rs -sSf > rustup\
  && bash rustup -y --default-toolchain stable\
  && (cd /opt/pixton && cargo build --release)
 
+ENV RUST_BACKTRACE=1
 WORKDIR /opt/pixton
 CMD ["target/release/pixton"]
 LABEL io.hica.bind_pwd=1\
