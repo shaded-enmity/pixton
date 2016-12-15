@@ -5,7 +5,7 @@ RUN dnf install -y clang file findutils gcc git llvm redhat-rpm-config tar \
     {clang,zlib}-devel openssl{,-devel}
 RUN useradd fedora --gid 0
 COPY . /opt/pixton
-RUN chown -R fedora:fedora /opt/pixton
+RUN chown -R fedora:0 /opt/pixton
 
 USER fedora
 WORKDIR /home/fedora
