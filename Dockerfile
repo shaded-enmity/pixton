@@ -3,7 +3,7 @@ MAINTAINER Pavel Odvody <podvody@redhat.com>
 
 RUN dnf install -y clang file findutils gcc git llvm redhat-rpm-config tar \
     {clang,zlib}-devel openssl{,-devel}
-RUN useradd fedora
+RUN useradd fedora --gid 0
 COPY . /opt/pixton
 RUN chown -R fedora:fedora /opt/pixton
 
